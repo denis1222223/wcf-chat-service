@@ -23,7 +23,8 @@ namespace WcfChatService
                 {
                     callback = OperationContext.Current.GetCallbackChannel<IChatCallbackService>();
                     users.Add(chatUser, callback);
-                    SendUsersToAll();
+                    AddUserToClientsUsersLists(chatUser);
+                    SendAllUsersToConnectedUser(chatUser);
                 }
             }
             catch (Exception ex)
@@ -32,6 +33,34 @@ namespace WcfChatService
             }
         }
 
+        private void SendAllUsersToConnectedUser(ChatUser chatUser)
+        {
+            try
+            {
+                users[chatUser].GetAllUsersToAddToClientUsersList(users.Keys.ToList());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            };
+        }
+
+        private void AddUserToClientsUsersLists(ChatUser chatUser)
+        {
+            try
+            {
+                foreach (var user in users)
+                {
+                    IChatCallbackService proxy = user.Value;
+                    proxy.GetUserToAddToClientUsersList(chatUser);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+/*
         private void SendUsersToAll()
         {
             try
@@ -48,7 +77,7 @@ namespace WcfChatService
                 throw ex;
             }
         }
-
+*/
         public void SendMessage(Message message)
         {
             try
@@ -72,7 +101,23 @@ namespace WcfChatService
                 if (users.ContainsKey(chatUser))
                 {
                     users.Remove(chatUser);
-                    SendUsersToAll();
+                    DeleteUserFromClientsUsersLists(chatUser);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void DeleteUserFromClientsUsersLists(ChatUser chatUser)
+        {
+            try
+            {
+                foreach (var user in users)
+                {
+                    IChatCallbackService proxy = user.Value;
+                    proxy.GetUserToDeleteFromClientUsersList(chatUser);
                 }
             }
             catch (Exception ex)

@@ -12,6 +12,13 @@ namespace WcfChatService
         void ReceiveMessage(Message message);
 
         [OperationContract(IsOneWay = true)]
-        void SendChatUsers(List<ChatUser> users);
+        void GetUserToAddToClientUsersList(ChatUser chatUser);
+
+        [OperationContract(IsOneWay = true)]
+        void GetUserToDeleteFromClientUsersList(ChatUser chatUser);
+
+        [OperationContract(IsOneWay = true)]
+        void GetAllUsersToAddToClientUsersList(List<ChatUser> chatUsers);
+
     }
 }
