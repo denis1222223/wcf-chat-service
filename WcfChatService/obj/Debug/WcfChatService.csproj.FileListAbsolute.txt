@@ -1,0 +1,6 @@
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\bin\Debug\WcfChatService.dll.config
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\bin\Debug\WcfChatService.dll
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\bin\Debug\WcfChatService.pdb
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\obj\Debug\WcfChatService.csprojResolveAssemblyReference.cache
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\obj\Debug\WcfChatService.dll
+c:\users\denis\onedrive\дакументы\visual studio 2013\Projects\WcfChatService\WcfChatService\obj\Debug\WcfChatService.pdb
